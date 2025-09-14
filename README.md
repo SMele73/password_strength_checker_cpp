@@ -1,4 +1,5 @@
 # Password Strength Checker (C++)
+Author: Shawn Mele
 
 A C++ application that evaluates the strength of a password based on length and character variety.  
 The program assigns points for each rule met and categorizes the password as Weak, Moderate, or Strong.
