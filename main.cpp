@@ -29,3 +29,39 @@ function scorePassword(password){
 
 return 0;
 }
+
+bool hasLowercase(const std::string &password) {
+	for (char c : password){
+		if (islower(c)) return true;
+	}
+	return false;
+}
+
+bool hasUppercase(const std::string &password){
+	for (char c : password){
+		if (isupper(c)) return true;
+	}
+	return false;
+}
+
+bool hasDigit(const std::string &password){
+	for (char c : password){
+		if (hasdigit(c)) return true;
+	}
+	return false;
+}
+
+bool hasSymbol(const std::string &password){
+	for (char c : password){
+		if (hassymbol(c)) return true;
+	}
+	return false;
+}
+
+int passwordLengthVal(const std::string &passwor){
+	int num = 0;
+	for (char c : password){
+		int num = ++
+	}
+	return num;
+}
