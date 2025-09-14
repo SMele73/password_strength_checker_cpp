@@ -8,29 +8,32 @@
 #include <string>
 #include <cctype>
 
+bool hasLowercase(const std::string &password);
+bool hasUppercase(const std::string &password);
+bool hasDigit(const std::string &password);
+bool hasSymbol(const std::string &password);
+int scorePassword(const std::string &password);
+std::string passwordCategory(int score);
 
-int main();
+int main(){
+	std::string password;
+	std::cout << "Enter a password: \n";
+	std::cin >> password;
 
-function scorePassword(password){
-	score = 0
+	int score = scorePassword(password);
+	std::string category = passwordCategory(score);
 
-	//lenth points
-	if length >= 12 :add 40
-	else if length >= 8 : add 25
-	else: add 10
-
-	//character variety
-	if has lowercase : add 15
-	if has uppercase : add 15
-	if has digit : add 15
-	if has symbos : add 15
-
-	return score;
+	std::cout << "Passwords are categorized based on their value.\n" 
+		<< "Weak < 40, Moderate 40-70, Strong above 70.\n"
+		<< "How did your password fare ? \n";
+	std::cout << "Score: " << score << std::endl;
+	std::cout << "Category: " << category << std::endl;
 
 return 0;
 }
 
 bool hasLowercase(const std::string &password) {
+
 	for (char c : password){
 		if (islower(c)) return true;
 	}
@@ -46,22 +49,41 @@ bool hasUppercase(const std::string &password){
 
 bool hasDigit(const std::string &password){
 	for (char c : password){
-		if (hasdigit(c)) return true;
+		if (isdigit(c)) return true;
 	}
 	return false;
 }
 
 bool hasSymbol(const std::string &password){
 	for (char c : password){
-		if (hassymbol(c)) return true;
+		if (ispunct(c)) return true;
 	}
 	return false;
 }
 
-int passwordLengthVal(const std::string &passwor){
-	int num = 0;
-	for (char c : password){
-		int num = ++
-	}
-	return num;
+int scorePassword(const std::string &password){
+	int score = 0;
+
+	//length points
+	if (password.length() >= 12)	 score += 40;
+	else if (password.length() >= 8) score += 20;
+	else score += 0;
+	
+
+	//character variety
+	if (hasLowercase(password)) score +=15;
+	if (hasUppercase(password)) score +=15;
+	if (hasDigit(password))		score +=15;
+	if (hasSymbol(password))	score +=15;
+
+	return score;
+}
+
+std::string passwordCategory(int score){
+	std::string category;
+	if (score < 40) category = "Weak";
+	else if (score < 70) category = "Moderate";
+	else category = "Strong";
+
+	return category;
 }
